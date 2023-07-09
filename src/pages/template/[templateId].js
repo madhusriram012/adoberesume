@@ -10,6 +10,7 @@ import AchievementBox from "@/components/AchievementBox";
 import Header from "@/components/Header/Header";
 import { loginAndGeneratePdf } from "@/api/resume.builder.rest";
 import { useEffect, useState } from "react";
+import PersonalInformation from "@/components/PersonalInformationBox";
 
 export async function getServerSideProps(context) {
   const templateId = context.query.templateId;
@@ -70,11 +71,12 @@ export default function Template({ templateId }) {
         return;
       }
 
-      const url=values.personalInformation.linkedInUrl
-      values.personalInformation.linkedInUrl=`<a href="${url}">LinkedIn</a>`
-
+      const url = values.personalInformation.linkedInUrl;
+      const urlLink = `<a href="${url}">LinkedIn</a>`;
+      const pdfBody = JSON.parse(JSON.stringify(values))
+      pdfBody.personalInformation.linkedInUrl = urlLink
       // Convert form values to JSON format
-      const json = JSON.stringify(values, null, 2);
+      const json = JSON.stringify(pdfBody, null, 2);
       setJsonData(json);
       console.log(json);
       try {
@@ -82,8 +84,10 @@ export default function Template({ templateId }) {
         setIsGeneratingPdf(true); // Set flag to indicate PDF generation is in progress
         await loginAndGeneratePdf(json);
         console.log("Data saved successfully! ");
+        alert("Form successfully submitted!");
       } catch (error) {
         console.error("Error saving data:", error);
+        alert("An error occurred while submitting the form. Please verify the form.");
       } finally {
         setIsGeneratingPdf(false);
       }
@@ -115,55 +119,7 @@ export default function Template({ templateId }) {
               Personal information
               <span>&nbsp;</span>
             </h4>
-            <div className="Template__formSection--row">
-              <LabelInput
-                id="name"
-                isMandatory
-                name="personalInformation.name"
-                label="Name"
-                value={formik.values.personalInformation.name}
-                placeholder="Enter your name"
-                onChange={formik.handleChange}
-              />
-              <LabelInput
-                id="lastName"
-                isMandatory
-                label="Last Name"
-                name="personalInformation.lastName"
-                value={formik.values.personalInformation.lastName}
-                placeholder="Enter your last name"
-                onChange={formik.handleChange}
-              />
-            </div>
-            <LabelInput
-              id="emailAddress"
-              isMandatory
-              label="Email"
-              name="personalInformation.emailAddress"
-              value={formik.values.personalInformation.emailAddress}
-              placeholder="Enter your email"
-              type="email"
-              onChange={formik.handleChange}
-            />
-            <LabelInput
-              id="phoneNumber"
-              isMandatory
-              label="Phone"
-              placeholder="Enter your phone number"
-              type="text"
-              name="personalInformation.phoneNumber"
-              value={formik.values.personalInformation.phoneNumber}
-              onChange={formik.handleChange}
-            />
-            <LabelInput
-              id="linkedInUrl"
-              isMandatory
-              label="LinkedIn"
-              name="personalInformation.linkedInUrl"
-              value={formik.values.personalInformation.linkedInUrl}
-              placeholder="Enter your LinkedIn URL"
-              onChange={formik.handleChange}
-            />
+            <PersonalInformation formik={formik} />
             <LabelInput
               id="jobTitle"
               isMandatory
