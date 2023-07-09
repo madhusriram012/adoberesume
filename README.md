@@ -39,14 +39,23 @@ If error persists while running the above command ,simply delete the node_module
   npm run dev
 ```
 
+## Improvements
+
+1. Adding login page instead of calling the /login endpoint before /resume endpoint.
+2. Improving validation.
+
 ## Demo
+
 1.In the home page you can choose any template from the given 3 templates and this leads to a form.
+
 <img width="1122" alt="image" src="https://github.com/madhusriram012/resumeapifrontend/assets/75003175/fd58e818-e5bc-40fa-91b7-18cb52b4a017">
 
 2.In the form you can enter the details and once you click the generate button it sends a requests with all the required information in json format to backend.
+
 <img width="1184" alt="image" src="https://github.com/madhusriram012/resumeapifrontend/assets/75003175/4e40ce1b-7d77-42d9-9c18-6651cc214d59">
 
-3.The API in backend compiles and merges all the infromation from json file and sends response in the form of pdf file which will prompt the user to download the file.
+3.The API in backend compiles and merges all the information from json file and sends response in the form of pdf file which will prompt the user to download the file.
+
 <img width="1176" alt="image" src="https://github.com/madhusriram012/resumeapifrontend/assets/75003175/78901a85-254a-42cd-8b58-9cf24da2feae">
 
 4.The output will look like the below in pdf format.
