@@ -8,6 +8,8 @@ import { Fragment, useMemo, useRef } from "react";
 import { customAlphabet } from "nanoid";
 import AchievementBox from "@/components/AchievementBox";
 import Header from "@/components/Header/Header";
+import {loginAndGeneratePdf} from "@/api/resume.builder.rest";
+import { useEffect, useState } from "react";
 
 export async function getServerSideProps(context) {
   const templateId = context.query.templateId;
@@ -20,29 +22,27 @@ export async function getServerSideProps(context) {
 
 export default function Template({ templateId }) {
   const nanoid = customAlphabet("1234567890abcdef", 7);
+  const [jsonData, setJsonData] = useState(null);
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
   const formik = useFormik({
     initialValues: {
       templateId: templateId,
       //   personalInfo
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      linkedInUrl: "",
+      personalInformation: {
+        name: "", // Add firstName inside personalInformation
+        lastName: "", // Add lastName inside personalInformation
+        emailAddress: "", // Add email inside personalInformation
+        phoneNumber: "", // Add phone inside personalInformation
+        linkedInUrl: "", // Add linkedInUrl inside personalInformation
+      },
       jobTitle: "",
       careerObjective: "",
       //   skills
-      skills: [
-        {
-          id: nanoid(),
-          skill: "",
-        },
-      ],
+      skills: [],
       //   education
       education: [
         {
-          id: nanoid(),
           schoolName: "",
           passingYear: "",
           description: "",
@@ -51,7 +51,6 @@ export default function Template({ templateId }) {
       //   experience
       experience: [
         {
-          id: nanoid(),
           companyName: "",
           passingYear: "",
           responsibilities: "",
@@ -60,20 +59,48 @@ export default function Template({ templateId }) {
       //   achievements
       achievements: [
         {
-          id: nanoid(),
           field: "",
-          award: "",
+          awards: "",
         },
       ],
     },
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
       if (Object.values(values).includes("")) {
         alert("Please fill all mandatory fields");
         return;
       }
+
+      // Convert form values to JSON format
+      const json = JSON.stringify(values, null, 2);
+      setJsonData(json);
+      console.log(json);
+      try {
+        // Set request headers
+        setIsGeneratingPdf(true); // Set flag to indicate PDF generation is in progress
+        await loginAndGeneratePdf(json)
+        console.log("Data saved successfully! ");
+      } catch (error) {
+        console.error("Error saving data:", error);
+      } finally {
+        setIsGeneratingPdf(false);
+      }
+    },
+
+    validate: (values) => {
+      let errors = {};
+
+      // Validate education fields
+      values.education.forEach((educationItem, index) => {
+        if (!educationItem.passingYear) {
+          errors.education = errors.education || [];
+          errors.education[index] = errors.education[index] || {};
+          errors.education[index].passingYear = "Cannot be blank";
+        }
+      });
+      return errors;
     },
   });
+
 
   return (
     <div className="Template">
@@ -88,10 +115,11 @@ export default function Template({ templateId }) {
             </h4>
             <div className="Template__formSection--row">
               <LabelInput
-                id="firstName"
+                id="name"
                 isMandatory
+                name="personalInformation.name"
                 label="Name"
-                value={formik.values.firstName}
+                value={formik.values.personalInformation.name}
                 placeholder="Enter your name"
                 onChange={formik.handleChange}
               />
@@ -99,34 +127,38 @@ export default function Template({ templateId }) {
                 id="lastName"
                 isMandatory
                 label="Last Name"
-                value={formik.values.lastName}
+                name="personalInformation.lastName"
+                value={formik.values.personalInformation.lastName}
                 placeholder="Enter your last name"
                 onChange={formik.handleChange}
               />
             </div>
             <LabelInput
-              id="email"
+              id="emailAddress"
               isMandatory
               label="Email"
-              value={formik.values.email}
+              name="personalInformation.emailAddress"
+              value={formik.values.personalInformation.emailAddress}
               placeholder="Enter your email"
               type="email"
               onChange={formik.handleChange}
             />
             <LabelInput
-              id="phone"
+              id="phoneNumber"
               isMandatory
               label="Phone"
-              value={formik.values.phone}
               placeholder="Enter your phone number"
-              type="number"
+              type="text"
+              name="personalInformation.phoneNumber"
+              value={formik.values.personalInformation.phoneNumber}
               onChange={formik.handleChange}
             />
             <LabelInput
               id="linkedInUrl"
               isMandatory
               label="LinkedIn"
-              value={formik.values.linkedInUrl}
+              name="personalInformation.linkedInUrl"
+              value={formik.values.personalInformation.linkedInUrl}
               placeholder="Enter your LinkedIn URL"
               onChange={formik.handleChange}
             />
@@ -168,9 +200,7 @@ export default function Template({ templateId }) {
                   <button
                     className="FancyButton"
                     type="button"
-                    onClick={() =>
-                      arrayHelpers.push({ id: nanoid(), skill: "" })
-                    }
+                    onClick={() => arrayHelpers.push(formik.values.skills)}
                   >
                     Add Skill
                   </button>
@@ -200,7 +230,6 @@ export default function Template({ templateId }) {
                     type="button"
                     onClick={() =>
                       arrayHelpers.push({
-                        id: nanoid(),
                         schoolName: "",
                         passingYear: "",
                         description: "",
@@ -235,7 +264,6 @@ export default function Template({ templateId }) {
                     type="button"
                     onClick={() =>
                       arrayHelpers.push({
-                        id: nanoid(),
                         companyName: "",
                         passingYear: "",
                         responsibilities: "",
@@ -263,6 +291,7 @@ export default function Template({ templateId }) {
                       formik={formik}
                       key={item.id}
                       index={index}
+                      awards={item.awards} // Update the prop name to 'awards'
                     />
                   ))}
                   <button
@@ -270,9 +299,8 @@ export default function Template({ templateId }) {
                     type="button"
                     onClick={() =>
                       arrayHelpers.push({
-                        id: nanoid(),
                         field: "",
-                        award: "",
+                        awards: "", // Update the field name to 'awards'
                       })
                     }
                   >
@@ -289,8 +317,10 @@ export default function Template({ templateId }) {
             style={{
               width: "100%",
             }}
+            onClick={formik.handleSubmit}
+            disabled={isGeneratingPdf}
           >
-            Submit
+            {isGeneratingPdf ? "Generating.." : "Generate"}
           </button>
         </form>
       </FormikProvider>

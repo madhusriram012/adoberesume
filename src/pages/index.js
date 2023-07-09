@@ -24,15 +24,12 @@ export default function Home() {
       <section className="Home__desc">
         <h1>ATS-Friendly Resume Templates</h1>
         <p>
-          If you want to apply to a rather large company, software called an
-          Applicant Tracking System (ATS) will most likely be in use. Recruiters
-          utilize ATS to streamline the recruiting process by storing, tracking,
-          and filtering job applications based on their relevance. With all the
-          tools Wozber has ready to boost your chances of success, you will
-          write relevant content from start to finish and present it in the most
-          ATS-friendly format. So jump in with any ATS-friendly resume template
-          you like and write an ATS-optimized resume right away, entirely for
-          free.
+          A Resume Builder API from backend allows users to create
+          professional resumes quickly and easily. The API uses pre-built
+          templates and dynamically generates the resume content based on the
+          user's input data, such as personal information, skills, experiences,
+          and education. This reduces the manual effort required to create and
+          format a resume.
         </p>
       </section>
       <section className="Home__templates">

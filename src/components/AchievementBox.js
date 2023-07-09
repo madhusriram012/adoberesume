@@ -2,7 +2,7 @@ import { useRef } from "react";
 import LabelInput from "./LabelInput/LabelInput";
 import { Flashcard } from "react-quizlet-flashcard";
 
-export default function AchievementBox({ arrayHelpers, formik, index }) {
+export default function AchievementBox({ arrayHelpers, formik, index,awards }) {
   const flipRef = useRef();
 
   return (
@@ -36,8 +36,8 @@ export default function AchievementBox({ arrayHelpers, formik, index }) {
             id="Award"
             isMandatory
             label="Award"
-            name={`achievements.${index}.award`}
-            value={formik.values.achievements[index].award}
+            name={`achievements.${index}.awards`}
+            value={awards}
             placeholder="Enter your award"
             onChange={formik.handleChange}
           />
