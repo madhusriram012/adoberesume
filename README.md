@@ -50,6 +50,7 @@ If error persists while running the above command ,simply delete the node_module
 <img width="1176" alt="image" src="https://github.com/madhusriram012/resumeapifrontend/assets/75003175/78901a85-254a-42cd-8b58-9cf24da2feae">
 
 4.The output will look like the below in pdf format.
+
 <img width="464" alt="image" src="https://github.com/madhusriram012/resumeapifrontend/assets/75003175/5e7e2804-ea40-4953-86bb-152467af2e4e">
 
 
