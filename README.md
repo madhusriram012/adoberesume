@@ -60,7 +60,8 @@ If error persists while running the above command ,simply delete the node_module
 
 4.The output will look like the below in pdf format.
 
-<img width="464" alt="image" src="https://github.com/madhusriram012/resumeapifrontend/assets/75003175/5e7e2804-ea40-4953-86bb-152467af2e4e">
+<img width="464" alt="image" src="https://github.com/madhusriram012/resumeapifrontend/assets/75003175/5f7d2eca-786f-432a-9399-4de89b95b1ac">
+
 
 
 
