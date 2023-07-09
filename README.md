@@ -1,38 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Resume Builder API frontend
 
-First, run the development server:
+This challenge aims to create a Resume Builder API that uses the Adobe Document Generation API to dynamically create PDF resumes from DOCX based templates.This repository is the frontend part.  
+
+# How to connect frontend to backend
+
+ 1.Go to this link below
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+  https://github.com/madhusriram012/resumeapibackend
+```
+2.Paste it on any web browser it will get you to the backend part of this project where it contains the Resume Builder API.
+
+3.Follow the steps in the backend repository to start the server.
+
+4.After starting the server come back to the frontend part and follow the steps below. 
+
+5.Make sure the backend server is running before you start the frontend server because backend server will send the response once the request has been sent from frontend part.
+
+## How to run
+
+
+### Step 1: Clone the repository
+```bash
+git clone https://github.com/madhusriram012/resumeapifrontend.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Step 2: Install dependencies
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+cd resumeapifrontend
+npm install 
+```
+If error persists while running the above command ,simply delete the node_modules folder and repeat the process.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### 3.To start development server
+```bash
+  npm run dev
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Demo
+<img width="1122" alt="image" src="https://github.com/madhusriram012/resumeapifrontend/assets/75003175/fd58e818-e5bc-40fa-91b7-18cb52b4a017">
