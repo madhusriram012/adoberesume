@@ -18,7 +18,7 @@ This challenge aims to create a Resume Builder API that uses the Adobe Document 
 
 5.Make sure the backend server is running before you start the frontend server because backend server will send the response once the request has been sent from frontend part.
 
-## How to run
+# How to run
 
 
 ### Step 1: Clone the repository
@@ -39,12 +39,12 @@ If error persists while running the above command ,simply delete the node_module
   npm run dev
 ```
 
-## Improvements
+# Improvements
 
 1. Adding login page instead of calling the /login endpoint before /resume endpoint.
 2. Improving validation.
 
-## Demo
+# Demo
 
 1.In the home page you can choose any template from the given 3 templates and this leads to a form.
 
