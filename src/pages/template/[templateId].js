@@ -8,7 +8,7 @@ import { Fragment, useMemo, useRef } from "react";
 import { customAlphabet } from "nanoid";
 import AchievementBox from "@/components/AchievementBox";
 import Header from "@/components/Header/Header";
-import {loginAndGeneratePdf} from "@/api/resume.builder.rest";
+import { loginAndGeneratePdf } from "@/api/resume.builder.rest";
 import { useEffect, useState } from "react";
 
 export async function getServerSideProps(context) {
@@ -70,6 +70,9 @@ export default function Template({ templateId }) {
         return;
       }
 
+      const url=values.personalInformation.linkedInUrl
+      values.personalInformation.linkedInUrl=`<a href="${url}">LinkedIn</a>`
+
       // Convert form values to JSON format
       const json = JSON.stringify(values, null, 2);
       setJsonData(json);
@@ -77,7 +80,7 @@ export default function Template({ templateId }) {
       try {
         // Set request headers
         setIsGeneratingPdf(true); // Set flag to indicate PDF generation is in progress
-        await loginAndGeneratePdf(json)
+        await loginAndGeneratePdf(json);
         console.log("Data saved successfully! ");
       } catch (error) {
         console.error("Error saving data:", error);
@@ -100,7 +103,6 @@ export default function Template({ templateId }) {
       return errors;
     },
   });
-
 
   return (
     <div className="Template">
