@@ -16,6 +16,7 @@ export default function SkillBox({ arrayHelpers, formik, index }) {
       }}
       frontHTML={
         <>
+        
           <button
             className="FancyButton Template__formSection--subBoxRowClose"
             type="button"
@@ -24,6 +25,7 @@ export default function SkillBox({ arrayHelpers, formik, index }) {
           >
             X
           </button>
+          
           <LabelInput
             id="Skill"
             isMandatory
@@ -33,6 +35,7 @@ export default function SkillBox({ arrayHelpers, formik, index }) {
             placeholder="Enter your skill"
             onChange={formik.handleChange}
           />
+          
         </>
       }
       backHTML={

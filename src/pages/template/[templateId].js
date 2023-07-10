@@ -40,7 +40,7 @@ export default function Template({ templateId }) {
       jobTitle: "",
       careerObjective: "",
       //   skills
-      skills: [],
+      skills: [""],
       //   education
       education: [
         {
