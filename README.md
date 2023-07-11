@@ -62,7 +62,7 @@ If error persists while running the above command ,simply delete the node_module
 
 The below can be seen in the terminal of backend code when generate button is pressed with all details entered in the form,where 200 denotes that the process is success.
 
-<img width="1064" alt="image" src="https://github.com/madhusriram012/resumeapifrontend/assets/75003175/a9d06784-06e5-4e85-ae31-2d338203fea7">
+<img width="464" alt="image" src="https://github.com/madhusriram012/resumeapifrontend/assets/75003175/5f7d2eca-786f-432a-9399-4de89b95b1ac">
 
 
 4.The output will look like the below in pdf format.
