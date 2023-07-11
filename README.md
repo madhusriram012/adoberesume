@@ -28,6 +28,8 @@ git clone https://github.com/madhusriram012/resumeapifrontend.git
 
 ### Step 2: Install dependencies
 
+To add node modules,type npm install in you terminal.
+ 
 ```bash
 cd resumeapifrontend
 npm install 
