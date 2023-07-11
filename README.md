@@ -68,7 +68,7 @@ The below can be seen in the terminal of backend code when generate button is pr
 
 4.The output will look like the below in pdf format.
 
-<img width="464" alt="image" src="https://github.com/madhusriram012/resumeapifrontend/assets/75003175/5f7d2eca-786f-432a-9399-4de89b95b1ac">
+<img width="480" alt="image" src="https://github.com/madhusriram012/resumeapifrontend/assets/75003175/1e739a44-29f0-49f4-8092-72c38df17669">
 
 
 
