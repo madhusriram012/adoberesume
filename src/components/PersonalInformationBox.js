@@ -44,7 +44,7 @@ const PersonalInformation = ({ formik }) => {
           id="phoneNumber"
           isMandatory
           label="Phone"
-          placeholder="Enter your phone number"
+          placeholder="Enter your phone number with extension"
           type="text"
           name="personalInformation.phoneNumber"
           value={formik.values.personalInformation.phoneNumber}
