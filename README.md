@@ -53,7 +53,7 @@ After running the above command, open [http://localhost:3000](http://localhost:3
 
 <img width="1122" alt="image" src="https://github.com/madhusriram012/resumeapifrontend/assets/75003175/fd58e818-e5bc-40fa-91b7-18cb52b4a017">
 
-2.In the form you can enter the details and once you click the generate button it sends a requests with all the required information in json format to backend.
+2.In the form you can enter the details and once you click the generate button it sends a requests with all the required information in json format to backend.(add phone number with extension in the form or else u will get error)
 
 <img width="1184" alt="image" src="https://github.com/madhusriram012/resumeapifrontend/assets/75003175/4e40ce1b-7d77-42d9-9c18-6651cc214d59">
 
