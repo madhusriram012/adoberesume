@@ -57,7 +57,7 @@ After running the above command, open [http://localhost:3000](http://localhost:3
 
 <img width="1184" alt="image" src="https://github.com/madhusriram012/resumeapifrontend/assets/75003175/4e40ce1b-7d77-42d9-9c18-6651cc214d59">
 
-3.The API in backend compiles and merges all the information from json file and sends response in the form of pdf file which will prompt the user to download the file.
+3.The API in backend compiles and merges all the information from json file and sends response in the form of pdf file which will prompt the user to download the file, so wait for few seconds after clicking the generate button
 
 <img width="1176" alt="image" src="https://github.com/madhusriram012/resumeapifrontend/assets/75003175/78901a85-254a-42cd-8b58-9cf24da2feae">
 
