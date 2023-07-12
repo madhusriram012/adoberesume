@@ -66,7 +66,7 @@ The below can be seen in the terminal of backend code when generate button is pr
 
 
 
-4.The output will look like the below in pdf format.
+4.The output will look like the below in pdf format, also the pdf gets downloaded inside output folder of the backend code at the same time.
 
 <img width="480" alt="image" src="https://github.com/madhusriram012/resumeapifrontend/assets/75003175/1e739a44-29f0-49f4-8092-72c38df17669">
 
